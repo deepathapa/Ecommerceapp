@@ -1,0 +1,136 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+
+}
+.container{
+  max-width:900px;
+  width:100%;
+  padding:30px;
+  border-radius: 6px;
+  /* margin:0 15px; */
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+header{
+  position:relative;
+  font-size:20px;
+  font-weight: 600;
+  color:#333;
+  font-family: sans-serif;
+ 
+}
+
+header::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-2px;
+  height:3px;
+  width:27px;
+  border-radius:8px;
+  background-color: #4070f4;
+}
+
+
+
+.card{
+  background:#fff;
+  max-width:700px;
+  padding:25px 30px;
+  width:100%;
+  border-radius:5px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.15);
+}
+
+
+.input_field{
+  margin-top:10px;
+}
+.form_wrapper .title{
+  font-size:25px;
+  font-weight: 500px;
+  position: relative;
+}
+
+.form_wrapper .title::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  height:3px;
+  width:30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+
+}
+
+.user-datails{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin:20px 0 12px 0;
+}
+
+.user-datails .input-box {
+  margin-bottom:15px;
+  width:calc(100% /2 -20px);
+  /* background-color: #9b59b6; */
+}
+
+.input-box .details{
+ display:block;
+ font-weight: 500;
+ margin-bottom: 5px;
+}
+
+ input{
+  height:45px;
+  width:100%;
+  outline:none;
+  font-size:16px;
+  border-radius: 5px;
+  padding-left:15px;
+  border: 1px solid #ccc;
+  border-bottom-width:2px;
+  transition: all 0.3.s ease;
+  margin-top: 3px;
+}
+
+.sub_btn{
+  background-color: #4070f4;
+  padding:10px 10px;
+  border-radius: 5px;
+  color:#fff;
+  border:1px solid #4070f4;
+  margin-top:10px;
+  cursor: pointer;
+}
+
+span{
+  color:red;
+  display: none;
+}
+
+input:invalid[focused="true"]{
+  border:1p solid red;
+}
+input:invalid[focused="true"] ~ span{
+  display: block;
+}
+
+.forget_title{
+  color:blue;
+}
