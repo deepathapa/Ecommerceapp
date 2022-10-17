@@ -44,18 +44,18 @@ const Login = () => {
               <div className="field_grid">
                 <div className="input_field">
                   <label>Mobile Number</label>
-                  <input type="text" placeholder='Enter mobile' value={user.mobile} name="mobile" onChange={handleLogin} autoComplete="off" required/>
+                  <input type="text" placeholder='Enter mobile' value={user.mobile} name="mobile" onChange={handleLogin} autoComplete="off" required={true}/>
                   <span className="error"></span>
                 </div>
 
                 <div className="input_field">
                   <label>Password</label>
                   <input type="text" placeholder='Enter password' value={user.password}
-                    onChange={handleLogin} name="password" autoComplete="new-password" required 
+                    onChange={handleLogin} name="password" autoComplete="new-password" required={true}
                   />
                   <div className="forget_title"><Link to="/forget">forget Password</Link></div>
                 </div>
-                <button type="submit" className="sub_btn">Submitdd</button>
+                <button type="submit" className="sub_btn">Submit</button>
               </div>
             </div>
 

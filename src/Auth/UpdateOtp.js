@@ -42,19 +42,19 @@ const UpdateOtp = () => {
             <div className="details personal">
               <div className="field_grid">
               <div className="input_field">
-                  <label>New Password</label>
-                  <input type="text" name="username" placeholder="Enter otp" value={getOtp.username} onChange={handleOtp} autoComplete="off" />
+                  <label> Enter Mobile</label>
+                  <input type="text" name="username" placeholder="Enter Mobile" value={getOtp.username} onChange={handleOtp} autoComplete="off" />
                 </div>
                 <div className="input_field">
                   <label>Enter Otp</label>
                  
-                  <input type="text" name="username" placeholder="Enter otp" value={getOtp.username} onChange={handleOtp} autoComplete="off" />
+                  <input type="text" name="otp" placeholder="Enter otp" value={getOtp.otp} onChange={handleOtp} autoComplete="off" />
                   <span className="error"></span>
                 </div>
 
                 <div className="input_field">
                   <label> Confime Password</label>
-                  <input type="text" name="username" placeholder="Enter otp" value={getOtp.password} onChange={handleOtp} autoComplete="off" />
+                  <input type="text" name="password" placeholder="Enter Password" value={getOtp.password} onChange={handleOtp} autoComplete="off" />
                  
                 </div>
                 <button type="submit" className="sub_btn">Update</button>
