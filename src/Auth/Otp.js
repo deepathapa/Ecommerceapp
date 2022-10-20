@@ -12,10 +12,9 @@ const Otp = ({ mobiledata }) => {
 
   const updatePassword = (e) => {
     e.preventDefault();
-    /*   if(data){
-      navigate('/updateOtp',{state:{id:data}})
+    if (userData) {
+      navigate('/updateOtp', { state: { data: userData } });
     }
-      */
   };
   return (
     <>
@@ -32,7 +31,7 @@ const Otp = ({ mobiledata }) => {
                     <input
                       type="text"
                       placeholder="Enter mobile"
-                      defaultValue={''}
+                      defaultValue={otp}
                       name="username"
                       autoComplete="off"
                     />
