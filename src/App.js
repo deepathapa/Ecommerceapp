@@ -7,11 +7,15 @@ import Otp from "./Auth/Otp";
 import Registration from './Auth/Registration';
 import UpdateOtp from './Auth/UpdateOtp';
 import Home from "./Component/Home";
+
 const App = () => {
   return (
     <>
+      
       <Routes>
-        <Route path="/" element={<Login title="Login"/>}/>
+     
+        <Route path="/" element={<Home title="Home"/>}/>
+        <Route path="/Home" element={<Home title="Home"/>}/>
         <Route path="/Login" element={<Login title="Login"/>}/>
         <Route path="/Resistration" element={<Registration title="Registration"/>}/>
         <Route path="/Home" element={<Home title="Home"/>}/>

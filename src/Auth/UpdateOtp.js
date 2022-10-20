@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from "../Axios/Axios";
 
 const UpdateOtp = () => {
@@ -8,56 +8,101 @@ const UpdateOtp = () => {
     {
       username: "",
       otp: "",
-      password: ""
+      password: "",
+      confirmPassword:""
     }
   )
 
-  const handleOtp = (e) => {
-    SetGetOtp({ ...getOtp, [e.target.name]: e.target.value });
-  }
+ const[formerror,setFormerror] = useState({});
+ const location = useLocation();
+  console.log(location, "useHook location")
+  const data = location.state?.id;
+
 
  
 
-  const subimtOtp = async (event) => {
+  const handleOtp = (e) => {
+    SetGetOtp({ ...getOtp, [e.target.name]: e.target.value });
+   
+  }
+
+  const subimtOtp = async(event) => {
     event.preventDefault();
+    setFormerror(validationform(getOtp));
+
     const sendOtp = {
       username: getOtp.username,
-      otp: getOtp.otp,
-      password: getOtp.password
-    }
-   const result = await axios.post('/updatePassword', sendOtp)
-   if(result.data.statuscode === 'TXN'){
-    alert('Password Updated Successfully')
-          navigate('/Login');
-          
-  }
      
+    }
+
+    
+      const res = await axios.post('/updatePassword',sendOtp)
+      if(res.data.statuscode === 'TXN'){
+        alert("Password Updated Successfully");
+        navigate('/Login')
+      }else {
+        alert("invalid credincial");
+      }
+
   }
+
+
+  // validation function
+  const validationform = (value) => {
+    const errors = {};
+    const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+    if(!value.password){
+      errors.password="please Enter password"
+    } else if(!passwordPattern.test(value.password)){
+      errors.password="Enter valid password";
+    }
+
+    if(!value.confirmPassword){
+      errors.confirmPassword="please enter  password"
+    } else if(value.confirmPassword !== value.password){
+      errors.confirmPassword="Password and Confirm Password does not match.";
+    }
+    return errors;
+  }
+
+
+  // getdata from localstorage
+  const userData = (localStorage.getItem("login"));
+  console.log(userData);
+  
   return (
    <>
+    <section className="bg_wrapper">
     <div className="container">
-        
         <form onSubmit={subimtOtp} >
           <div className="form first">
             <div className="details personal">
               <div className="field_grid">
-              <div className="input_field">
-                  <label> Enter Mobile</label>
-                  <input type="text" name="username" placeholder="Enter Mobile" value={getOtp.username} onChange={handleOtp} autoComplete="off" />
-                </div>
+             
                 <div className="input_field">
-                  <label>Enter Otp</label>
-                 
-                  <input type="text" name="otp" placeholder="Enter otp" value={getOtp.otp} onChange={handleOtp} autoComplete="off" />
+                <label>mobile</label>
+                  <input type="text" name="username" placeholder="Enter otp"  onChange={handleOtp} autoComplete="off" />
                   <span className="error"></span>
                 </div>
 
                 <div className="input_field">
-                  <label> Confime Password</label>
-                  <input type="text" name="password" placeholder="Enter Password" value={getOtp.password} onChange={handleOtp} autoComplete="off" />
+                <label>otp</label>
+                  <input type="text" name="otp" placeholder="Enter otp" defaultValue={data} onChange={handleOtp} autoComplete="off" />
                  
                 </div>
-                <button type="submit" className="sub_btn">Update</button>
+
+                <div className="input_field">
+                  <label>Password</label>
+                  <input type="text" name="password" placeholder="Enter otp" value={getOtp.password} onChange={handleOtp} autoComplete="off" />
+                  <span className="error">{formerror.password}</span>
+                </div>
+
+                <div className="input_field">
+                  <label>Confirm Password</label>
+                  <input type="text" name="confirmPassword" placeholder="Enter otp" value={getOtp.confirmPassword} onChange={handleOtp} autoComplete="off" />
+                  <span className="error">{formerror.confirmPassword}</span>
+                </div>
+                <button type="submit" className="sub_btn">Submit</button>
               </div>
             </div>
 
@@ -65,6 +110,8 @@ const UpdateOtp = () => {
         </form>
 
       </div>
+    </section>
+   
    </>
   )
 }

@@ -9,10 +9,10 @@ const FormInput = (props) => {
   };
   return (
     <>
-      <div className="input_field">
+      <div className="input_field register_input">
         <label>{label}</label>
         <input {...inputProps} onChange={onChange} onBlur={handleFocus} focused={focused.toString()}/>
-        <span className="error">{errorMessage}</span>
+        <p className="error">{errorMessage}</p>
       </div>
     </>
   )

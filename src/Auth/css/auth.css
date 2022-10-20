@@ -2,24 +2,27 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
   
 }
 
-body{
+
+.bg_wrapper{
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
   min-height:100vh;
   display:flex;
   justify-content: center;
   align-items: center;
   padding:10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-
+ 
 }
 .container{
-  max-width:900px;
-  width:100%;
+  max-width:350px;
+
   padding:30px;
   border-radius: 6px;
-  /* margin:0 15px; */
+ 
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
@@ -111,26 +114,56 @@ header::before{
 
 .sub_btn{
   background-color: #4070f4;
-  padding:10px 10px;
+  padding: 10px 20px;
   border-radius: 5px;
-  color:#fff;
-  border:1px solid #4070f4;
-  margin-top:10px;
+  color: #fff;
+  border: 1px solid #4070f4;
+  margin-top: 10px;
   cursor: pointer;
+  font-size: 16px;
+  width:100%;
+  margin-top:10px;
 }
-
-span{
-  color:red;
-  display: none;
+.field_grid{
+  display: grid;
+  grid-template-columns: (2,1fr);
 }
-
+ 
+.register_input p{
+  display:none;
+}
 input:invalid[focused="true"]{
   border:1p solid red;
 }
-input:invalid[focused="true"] ~ span{
+input:invalid[focused="true"] ~ p{
   display: block;
-}
+} 
 
 .forget_title{
   color:blue;
+  text-align: end;
+}
+.register_bottom{
+  text-align: center;
+  padding:10px 10px;
+}
+.error{
+  color:red;
+}
+
+.register_footer{
+  text-align: center;
+  color:black;
+  padding:5px;
+}
+
+.password_wrap{
+  position: relative;
+}
+
+.eye_icon{
+  position: absolute;
+  top: 15px;
+  
+  right: 11px;
 }

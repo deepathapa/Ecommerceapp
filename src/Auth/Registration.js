@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import "../Auth/css/auth.css";
 import axios from "../Axios/Axios";
-import "./auth.css";
 import FormInput from './FormInput';
 import { inputs } from "./registrationsdata";
 const Registration = () => {
@@ -14,14 +14,21 @@ const Registration = () => {
     password:"",
     gender:"",
   })
-
+  
+  const [formValues,setFormVlaues] = useState(values);
+ const [formErrors,setFormErros] = useState({});
+ const [isSubmit,setIsSubmit] = useState(false);
+ 
+ 
+  const navigate = useNavigate()
   const onChange = (e) => {
     setValues({...values,[e.target.name]: e.target.value});
   }
- 
-  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormErros(validate(formValues));
+    setIsSubmit(true);
     const senddata = {
       first_name:values.first_name,
       last_name:values.last_name,
@@ -42,8 +49,27 @@ const Registration = () => {
     
   }
 
+  useEffect(() => {
+    console.log(formErrors)
+    if(Object.keys(formErrors).length === 0 && isSubmit){
+      console.log(formValues)
+    }
+  },[formErrors]);
 
-
+  const validate = (e) => {
+    const errors = {};
+    const regex = /^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/;
+    if(!e.first_name) {
+      errors.first_name = "username is required";
+    }
+    if(!e.email) {
+      errors.email = "username is required";
+    }
+    if(!e.password) {
+      errors.password = "username is required";
+    }
+   
+  }
 
   return (
     <>

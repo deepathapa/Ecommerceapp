@@ -22,7 +22,7 @@ export const inputs = [
       name:"email",
       type:"email",
       placeholder:"email",
-       errorMessage:"email  reauired",
+      errorMessage:"email  reauired",
       label:"Email",
       required:true
     },
